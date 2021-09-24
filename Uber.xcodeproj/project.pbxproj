@@ -15,13 +15,13 @@
 		3AABCF4C26F90A740084295B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AABCF4A26F90A740084295B /* LaunchScreen.storyboard */; };
 		3AABCF5D26F90B7A0084295B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF5C26F90B7A0084295B /* LoginController.swift */; };
 		3AABCF6026F910960084295B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF5F26F910960084295B /* Extensions.swift */; };
+		3AED8F8526FE5FD00015E4BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */; };
 		3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */; };
 		F6DE89C027BD611029F5B9C2 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A83CA75BE4DC77383781750 /* Pods_Uber.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3A61730526FD09F000B57DB6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
-		3A61730B26FD112300B57DB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AABCF3C26F90A710084295B /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AABCF3F26F90A710084295B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AABCF4126F90A710084295B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +31,7 @@
 		3AABCF4D26F90A740084295B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AABCF5C26F90B7A0084295B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3AABCF5F26F910960084295B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		4A83CA75BE4DC77383781750 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2E444C80C5060DA87D5709 /* Pods-Uber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.release.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.release.xcconfig"; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		3AABCF3326F90A710084295B = {
 			isa = PBXGroup;
 			children = (
-				3A61730B26FD112300B57DB6 /* GoogleService-Info.plist */,
 				3AABCF3E26F90A710084295B /* Uber */,
 				3AABCF3D26F90A710084295B /* Products */,
 				45F520814A09444D9CA78CE6 /* Pods */,
@@ -90,6 +90,7 @@
 				3AABCF4826F90A740084295B /* Assets.xcassets */,
 				3AABCF4A26F90A740084295B /* LaunchScreen.storyboard */,
 				3AABCF4D26F90A740084295B /* Info.plist */,
+				3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */,
 			);
 			path = Uber;
 			sourceTree = "<group>";
@@ -202,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AABCF4C26F90A740084295B /* LaunchScreen.storyboard in Resources */,
+				3AED8F8526FE5FD00015E4BF /* GoogleService-Info.plist in Resources */,
 				3AABCF4926F90A740084295B /* Assets.xcassets in Resources */,
 				3AABCF4726F90A710084295B /* Main.storyboard in Resources */,
 			);

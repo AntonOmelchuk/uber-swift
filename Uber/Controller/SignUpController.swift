@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignUPController: UIViewController {
     
@@ -69,6 +70,7 @@ class SignUPController: UIViewController {
         let button = AuthButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
         
         return button
     }()
@@ -85,8 +87,35 @@ class SignUPController: UIViewController {
         return button
     }()
     
+    // MARK: - Selectors
+    
     @objc func handleShowLogin() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func handleSignUp() {
+        guard let email = emailTextField.text else { return }
+        guard let password = passwortTextField.text else { return }
+        guard let fullName = fullNameTextField.text else { return }
+        let accountTypeIndex = segmentedControl.selectedSegmentIndex
+        
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("Failed t oregister user with error \(error)")
+                return
+            }
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let values = ["email": email, "fullName": fullName, "accountType": accountTypeIndex] as [String: Any]
+            
+            Database
+                .database(url: "https://uber-63066-default-rtdb.europe-west1.firebasedatabase.app")
+                .reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
+                print("Successfully registered user and saved data...")
+            }
+        }
     }
     
     // MARK: - Lifecycle
