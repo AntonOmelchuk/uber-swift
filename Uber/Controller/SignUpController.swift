@@ -102,7 +102,7 @@ class SignUPController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("Failed t oregister user with error \(error)")
+                print("DEBUG: Failed t oregister user with error \(error)")
                 return
             }
             
