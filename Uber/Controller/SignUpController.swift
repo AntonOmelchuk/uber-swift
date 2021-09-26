@@ -113,7 +113,7 @@ class SignUPController: UIViewController {
             Database
                 .database(url: "https://uber-63066-default-rtdb.europe-west1.firebasedatabase.app")
                 .reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
-                print("Successfully registered user and saved data...")
+                    self.dismiss(animated: true, completion: nil)
             }
         }
     }
