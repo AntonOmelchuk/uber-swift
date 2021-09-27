@@ -40,10 +40,7 @@ class LocationInputActivationView: UIView {
         
         backgroundColor = .white
         layer.cornerRadius = 5
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-        layer.shadowOpacity = 0.55
-        layer.masksToBounds = false
+        addShadow()
         
         addSubview(indicatorView)
         indicatorView.centerY(inView: self, leftAnchor: leftAnchor, paddingLeft: 16)

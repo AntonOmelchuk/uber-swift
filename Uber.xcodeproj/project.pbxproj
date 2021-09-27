@@ -17,6 +17,7 @@
 		3AABCF5D26F90B7A0084295B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF5C26F90B7A0084295B /* LoginController.swift */; };
 		3AABCF6026F910960084295B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF5F26F910960084295B /* Extensions.swift */; };
 		3ADD5C30270237800036B239 /* LocationInputActivationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD5C2F270237800036B239 /* LocationInputActivationView.swift */; };
+		3ADD5C33270243570036B239 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD5C32270243570036B239 /* LocationInputView.swift */; };
 		3AED8F8526FE5FD00015E4BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */; };
 		3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */; };
 		F6DE89C027BD611029F5B9C2 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A83CA75BE4DC77383781750 /* Pods_Uber.framework */; };
@@ -35,6 +36,7 @@
 		3AABCF5C26F90B7A0084295B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		3AABCF5F26F910960084295B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3ADD5C2F270237800036B239 /* LocationInputActivationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputActivationView.swift; sourceTree = "<group>"; };
+		3ADD5C32270243570036B239 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		4A83CA75BE4DC77383781750 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				3A61730526FD09F000B57DB6 /* AuthButton.swift */,
+				3ADD5C32270243570036B239 /* LocationInputView.swift */,
 				3ADD5C2F270237800036B239 /* LocationInputActivationView.swift */,
 			);
 			path = View;
@@ -267,6 +270,7 @@
 				3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */,
 				3A61730626FD09F000B57DB6 /* AuthButton.swift in Sources */,
 				3A69DBE92700EE970072EE75 /* HomeController.swift in Sources */,
+				3ADD5C33270243570036B239 /* LocationInputView.swift in Sources */,
 				3AABCF4026F90A710084295B /* AppDelegate.swift in Sources */,
 				3AABCF5D26F90B7A0084295B /* LoginController.swift in Sources */,
 				3AABCF4226F90A710084295B /* SceneDelegate.swift in Sources */,
