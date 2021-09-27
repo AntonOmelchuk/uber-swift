@@ -14,6 +14,7 @@ class HomeController: UIViewController {
     // MARK: - Properties
     
     private let mapView = MKMapView()
+    private let locationManager = CLLocationManager()
     
     // MARK: - Lifecycle
     
@@ -21,7 +22,7 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         
         checkIfUserIsLoggedIn()
-        view.backgroundColor = .systemGray
+        enableLocationServices()
     }
     
     // MARK: - API
@@ -51,5 +52,25 @@ class HomeController: UIViewController {
     func configureUI() {
         view.addSubview(mapView)
         mapView.frame = view.frame
+    }
+}
+
+extension HomeController {
+    func enableLocationServices() {
+    
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            break
+        case .authorizedAlways:
+            locationManager.startUpdatingLocation()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        case .authorizedWhenInUse:
+            locationManager.requestAlwaysAuthorization()
+        default:
+            break
+        }
+
     }
 }
