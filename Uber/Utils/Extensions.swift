@@ -96,8 +96,18 @@ extension UIView {
         centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     
-    func centerY(inView view: UIView, constant: CGFloat = 0) {
+    func centerY(inView view: UIView, leftAnchor: NSLayoutXAxisAnchor? = nil, paddingLeft: CGFloat = 0, constant: CGFloat = 0) {
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
+        
+        if let leftAnchor = leftAnchor {
+            anchor(left: leftAnchor, paddingLeft: paddingLeft)
+        }
+    }
+    
+    func setDemensions(height: CGFloat, width: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(equalToConstant: height).isActive = true
+        widthAnchor.constraint(equalToConstant: width).isActive = true
     }
 }
 
