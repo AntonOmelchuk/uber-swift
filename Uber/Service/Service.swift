@@ -15,10 +15,11 @@ struct Service {
     static let shared = Service()
     let currentUid = Auth.auth().currentUser?.uid
     
-    func fetchUserData() {
+    func fetchUserData(completion: @escaping(String) -> Void) {
         REF_USERS.child(currentUid!).observeSingleEvent(of: .value) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             guard let fullName = dictionary["fullName"] as? String else { return }
+            completion(fullName)
         }
     }
 }

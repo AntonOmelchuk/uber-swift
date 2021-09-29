@@ -25,7 +25,7 @@ class LocationInputView: UIView {
         return button
     }()
     
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
        let label = UILabel()
         label.text = "Stephan Dowless"
         label.textColor = .darkGray
