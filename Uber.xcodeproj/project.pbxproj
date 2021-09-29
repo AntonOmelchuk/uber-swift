@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A61730626FD09F000B57DB6 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A61730526FD09F000B57DB6 /* AuthButton.swift */; };
+		3A6680442704E6ED005B75AB /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6680432704E6ED005B75AB /* LocationCell.swift */; };
 		3A69DBE92700EE970072EE75 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69DBE82700EE970072EE75 /* HomeController.swift */; };
 		3AABCF4026F90A710084295B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF3F26F90A710084295B /* AppDelegate.swift */; };
 		3AABCF4226F90A710084295B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF4126F90A710084295B /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		3A61730526FD09F000B57DB6 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		3A6680432704E6ED005B75AB /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		3A69DBE82700EE970072EE75 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		3AABCF3C26F90A710084295B /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AABCF3F26F90A710084295B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				3A61730526FD09F000B57DB6 /* AuthButton.swift */,
 				3ADD5C32270243570036B239 /* LocationInputView.swift */,
 				3ADD5C2F270237800036B239 /* LocationInputActivationView.swift */,
+				3A6680432704E6ED005B75AB /* LocationCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				3ADD5C33270243570036B239 /* LocationInputView.swift in Sources */,
 				3AABCF4026F90A710084295B /* AppDelegate.swift in Sources */,
 				3AABCF5D26F90B7A0084295B /* LoginController.swift in Sources */,
+				3A6680442704E6ED005B75AB /* LocationCell.swift in Sources */,
 				3AABCF4226F90A710084295B /* SceneDelegate.swift in Sources */,
 				3ADD5C30270237800036B239 /* LocationInputActivationView.swift in Sources */,
 				3AABCF6026F910960084295B /* Extensions.swift in Sources */,
