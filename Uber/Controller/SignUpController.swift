@@ -7,10 +7,13 @@
 
 import UIKit
 import Firebase
+import GeoFire
 
 class SignUPController: UIViewController {
     
     // MARK: - Properties
+    
+    private let location = LocationHandler.shared.locationManager.location
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -87,6 +90,13 @@ class SignUPController: UIViewController {
         return button
     }()
     
+    // MARK: - Lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureUI()
+    }
+    
     // MARK: - Selectors
     
     @objc func handleShowLogin() {
@@ -100,7 +110,7 @@ class SignUPController: UIViewController {
         let accountTypeIndex = segmentedControl.selectedSegmentIndex
         
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { [self] (result, error) in
             if let error = error {
                 print("DEBUG: Failed t oregister user with error \(error)")
                 return
@@ -110,25 +120,31 @@ class SignUPController: UIViewController {
             
             let values = ["email": email, "fullName": fullName, "accountType": accountTypeIndex] as [String: Any]
             
-            Database
-                .database(url: "https://uber-63066-default-rtdb.europe-west1.firebasedatabase.app")
-                .reference().child("users").child(uid).updateChildValues(values) { (error, ref) in
-                    self.dismiss(animated: true, completion: nil)
+            if accountTypeIndex == 1 {
+                let geofire = GeoFire(firebaseRef: REF_DRIVER_LOCATIONS)
+                
+                guard let location = self.location else { return }
+                geofire.setLocation(location, forKey: uid) { error in
+                    self.uploadUserDataAndShowHomeController(values: values, uid: uid)
+                }
             }
+            
+            uploadUserDataAndShowHomeController(values: values, uid: uid)
+            
         }
     }
     
-    // MARK: - Lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureUI()
-    }
-    
-    // MARK: - Selectors
-    
     // MARK: - Helper Functions
+    
+    func uploadUserDataAndShowHomeController(values: [String: Any], uid: String) {
+        REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
+            let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
+            guard let controller = window?.rootViewController as? HomeController else { return }
+            
+            controller.configureUI()
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     func configureUI() {
         view.backgroundColor = .backgroundColor

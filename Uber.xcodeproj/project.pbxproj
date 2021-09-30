@@ -23,6 +23,7 @@
 		3AED8F8526FE5FD00015E4BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */; };
 		3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */; };
 		3AFEDC6227062A0400A612EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEDC6127062A0400A612EB /* User.swift */; };
+		3AFEDC6427062F7000A612EB /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEDC6327062F7000A612EB /* LocationHandler.swift */; };
 		F6DE89C027BD611029F5B9C2 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A83CA75BE4DC77383781750 /* Pods_Uber.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		3AFEDC6127062A0400A612EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3AFEDC6327062F7000A612EB /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		4A83CA75BE4DC77383781750 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2E444C80C5060DA87D5709 /* Pods-Uber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.release.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.release.xcconfig"; sourceTree = "<group>"; };
 		AE5D3EFEFDEEE868A795AC84 /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				3AABCF5F26F910960084295B /* Extensions.swift */,
+				3AFEDC6327062F7000A612EB /* LocationHandler.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				3AABCF4026F90A710084295B /* AppDelegate.swift in Sources */,
 				3AABCF5D26F90B7A0084295B /* LoginController.swift in Sources */,
 				3A6680442704E6ED005B75AB /* LocationCell.swift in Sources */,
+				3AFEDC6427062F7000A612EB /* LocationHandler.swift in Sources */,
 				3AABCF4226F90A710084295B /* SceneDelegate.swift in Sources */,
 				3AFEDC6227062A0400A612EB /* User.swift in Sources */,
 				3A6680462704F364005B75AB /* Service.swift in Sources */,

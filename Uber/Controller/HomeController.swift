@@ -16,7 +16,7 @@ class HomeController: UIViewController {
     // MARK: - Properties
     
     private let mapView = MKMapView()
-    private let locationManager = CLLocationManager()
+    private let locationManager = LocationHandler.shared.locationManager
     
     private let inputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
@@ -32,7 +32,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         checkIfUserIsLoggedIn()
         enableLocationServices()
         fetchUserData()
@@ -61,6 +61,11 @@ class HomeController: UIViewController {
     func signOut() {
         do {
             try Auth.auth().signOut()
+            DispatchQueue.main.async {
+                let navigationController = UINavigationController(rootViewController: LoginController())
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true, completion: nil)
+            }
         } catch {
             print("DEBUG: Error signing out")
         }
@@ -127,16 +132,16 @@ class HomeController: UIViewController {
 extension HomeController {
     func enableLocationServices() {
     
-        switch locationManager.authorizationStatus {
+        switch locationManager?.authorizationStatus {
         case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
+            locationManager?.requestWhenInUseAuthorization()
         case .denied, .restricted:
             break
         case .authorizedAlways:
-            locationManager.startUpdatingLocation()
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager?.startUpdatingLocation()
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
         case .authorizedWhenInUse:
-            locationManager.requestAlwaysAuthorization()
+            locationManager?.requestAlwaysAuthorization()
         default:
             break
         }
