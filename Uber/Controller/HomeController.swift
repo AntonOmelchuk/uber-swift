@@ -41,8 +41,8 @@ class HomeController: UIViewController {
     // MARK: - API
     
     func fetchUserData() {
-        Service.shared.fetchUserData { fullName in
-            self.fullName = fullName
+        Service.shared.fetchUserData { user in
+            self.fullName = user.fullName
         }
     }
     

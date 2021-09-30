@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol LocationInputViewDelegate: class {
+protocol LocationInputViewDelegate: AnyObject {
     func dismissLocationInputView()
 }
 
