@@ -11,7 +11,7 @@
 		3A6680442704E6ED005B75AB /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6680432704E6ED005B75AB /* LocationCell.swift */; };
 		3A6680462704F364005B75AB /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6680452704F364005B75AB /* Service.swift */; };
 		3A69DBE92700EE970072EE75 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69DBE82700EE970072EE75 /* HomeController.swift */; };
-		3A90EC142707A51100305EB2 /* Driver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90EC132707A51100305EB2 /* Driver.swift */; };
+		3A90EC142707A51100305EB2 /* DriverAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A90EC132707A51100305EB2 /* DriverAnnotation.swift */; };
 		3AABCF4026F90A710084295B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF3F26F90A710084295B /* AppDelegate.swift */; };
 		3AABCF4226F90A710084295B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AABCF4126F90A710084295B /* SceneDelegate.swift */; };
 		3AABCF4726F90A710084295B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AABCF4526F90A710084295B /* Main.storyboard */; };
@@ -33,7 +33,7 @@
 		3A6680432704E6ED005B75AB /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		3A6680452704F364005B75AB /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		3A69DBE82700EE970072EE75 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		3A90EC132707A51100305EB2 /* Driver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Driver.swift; sourceTree = "<group>"; };
+		3A90EC132707A51100305EB2 /* DriverAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverAnnotation.swift; sourceTree = "<group>"; };
 		3AABCF3C26F90A710084295B /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AABCF3F26F90A710084295B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AABCF4126F90A710084295B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				3AFEDC6127062A0400A612EB /* User.swift */,
-				3A90EC132707A51100305EB2 /* Driver.swift */,
+				3A90EC132707A51100305EB2 /* DriverAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */,
-				3A90EC142707A51100305EB2 /* Driver.swift in Sources */,
+				3A90EC142707A51100305EB2 /* DriverAnnotation.swift in Sources */,
 				3A61730626FD09F000B57DB6 /* AuthButton.swift in Sources */,
 				3A69DBE92700EE970072EE75 /* HomeController.swift in Sources */,
 				3ADD5C33270243570036B239 /* LocationInputView.swift in Sources */,
