@@ -141,7 +141,7 @@ class SignUPController: UIViewController {
             let window = UIApplication.shared.windows.filter { $0.isKeyWindow }.first
             guard let controller = window?.rootViewController as? HomeController else { return }
             
-            controller.configureUI()
+            controller.configure()
             self.dismiss(animated: true, completion: nil)
         }
     }
