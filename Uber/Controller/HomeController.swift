@@ -33,6 +33,7 @@ class HomeController: UIViewController {
     private let rideActionView = RideActionView()
     private var searchResults = [MKPlacemark]()
     private final let locationInputViewHeight: CGFloat = 200
+    private final let rideActionViewHeight: CGFloat = 300
     private var route: MKRoute?
     
     private var fullName: String? {
@@ -62,6 +63,7 @@ class HomeController: UIViewController {
             UIView.animate(withDuration: 0.3) {
                 self.inputActivationView.alpha = 1
                 self.configureActionButton(config: .showMenu)
+                self.animateRideActionView(shouldShow: false)
             }
         }
     }
@@ -190,7 +192,21 @@ class HomeController: UIViewController {
     func configureRideActionView() {
         view.addSubview(rideActionView)
         
-        rideActionView.frame = CGRect(x: 0, y: view.frame.height - 300, width: view.frame.width, height: 300)
+        rideActionView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: rideActionViewHeight)
+    }
+    
+    func animateRideActionView(shouldShow: Bool, destination: MKPlacemark? = nil) {
+        let viewHeight = self.view.frame.height
+        let yOrigin = shouldShow ? viewHeight - self.rideActionViewHeight : viewHeight
+        
+        if shouldShow {
+            guard let destination = destination else { return }
+            self.rideActionView.destination = destination
+        }
+
+        UIView.animate(withDuration: 0.3) {
+            self.rideActionView.frame.origin.y = yOrigin
+        }
     }
     
     func configureTableView() {
@@ -397,6 +413,8 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             let annotations = self.mapView.annotations.filter { !$0.isKind(of: DriverAnnotation.self) }
             
             self.mapView.showAnnotations(annotations, animated: true)
+            
+            self.animateRideActionView(shouldShow: true, destination: selectedPlacemark)
         }
     }
 }
