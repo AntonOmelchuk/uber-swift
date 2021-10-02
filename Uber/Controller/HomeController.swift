@@ -56,6 +56,7 @@ class HomeController: UIViewController {
         case .dissmisActionView:
             
             removeAnnotationsAndOverlays()
+            mapView.showAnnotations(mapView.annotations, animated: true)
             
             UIView.animate(withDuration: 0.3) {
                 self.inputActivationView.alpha = 1
@@ -384,6 +385,10 @@ extension HomeController: UITableViewDelegate, UITableViewDataSource {
             annotataion.coordinate = selectedPlacemark.coordinate
             self.mapView.addAnnotation(annotataion)
             self.mapView.selectAnnotation(annotataion, animated: true)
+            
+            let annotations = self.mapView.annotations.filter { !$0.isKind(of: DriverAnnotation.self) }
+            
+            self.mapView.showAnnotations(annotations, animated: true)
         }
     }
 }
