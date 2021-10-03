@@ -8,12 +8,17 @@
 import UIKit
 import MapKit
 
+protocol PickupControllerDelegate: AnyObject {
+    func didAcceptTrip(_ trip: Trip)
+}
+
 class PickupController: UIViewController {
     
     // MARK: - Properties
     
     private let mapView = MKMapView()
     let trip: Trip
+    weak var delegate: PickupControllerDelegate?
     
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
@@ -71,7 +76,9 @@ class PickupController: UIViewController {
     }
     
     @objc func handleAcceptTrip() {
-        print("DEBUG: handle accept trip...")
+        Service.shared.acceptTrip(trip: trip) { (error, ref) in
+            self.delegate?.didAcceptTrip(self.trip)
+        }
     }
     
     // MARK: - API
