@@ -36,8 +36,23 @@ class HomeController: UIViewController {
     private final let rideActionViewHeight: CGFloat = 300
     private var route: MKRoute?
     
-    private var fullName: String? {
-        didSet { locationInputView.titleLabel.text = fullName }
+    private var user: User? {
+        didSet {
+            locationInputView.titleLabel.text = user?.fullName
+            
+            if user?.accountType == .passenger {
+                fetchDrivers()
+                configureLocationInputActivationView()
+            } else {
+                observeTrips()
+            }
+        }
+    }
+    
+    private var trip: Trip? {
+        didSet {
+            print("DEBUG: Show pickup passenger controller...")
+        }
     }
     
     private var actionButtonConfig = ActionButtonConfiguration()
@@ -82,7 +97,7 @@ class HomeController: UIViewController {
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         Service.shared.fetchUserData(uid: currentUid) { user in
-            self.fullName = user.fullName
+            self.user = user
         }
     }
     
@@ -106,6 +121,12 @@ class HomeController: UIViewController {
             if !driverIsVisible {
                 self.mapView.addAnnotation(annotation)
             }
+        }
+    }
+    
+    func observeTrips() {
+        Service.shared.observeTrips { trip in
+            self.trip = trip
         }
     }
     
@@ -139,7 +160,6 @@ class HomeController: UIViewController {
     func configure() {
         configureUI()
         fetchUserData()
-        fetchDrivers()
     }
     
     func configureUI() {
@@ -149,6 +169,10 @@ class HomeController: UIViewController {
         view.addSubview(actionButton)
         actionButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20, width: 30, height: 30)
         
+        configureTableView()
+    }
+    
+    func configureLocationInputActivationView() {
         view.addSubview(inputActivationView)
         inputActivationView.centerX(inView: view)
         inputActivationView.setDemensions(height: 50, width: view.frame.width - 64)
@@ -156,13 +180,9 @@ class HomeController: UIViewController {
         inputActivationView.alpha = 0
         inputActivationView.delegate = self
         
-        
-        
         UIView.animate(withDuration: 2) {
             self.inputActivationView.alpha = 1
         }
-        
-        configureTableView()
     }
     
     func configureMapView() {
