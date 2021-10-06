@@ -16,6 +16,7 @@ enum RideActionViewConfiguration {
     case requestRide
     case tripAccepted
     case pickupPassenger
+    case tripInProgress
     case endTrip
     
     init() {
@@ -58,6 +59,7 @@ class RideActionView: UIView {
     
     var config = RideActionViewConfiguration()
     var buttonAction = ButtonAction()
+    var user: User?
     
     weak var delegate: RideActionViewDelegate?
     
@@ -169,6 +171,30 @@ class RideActionView: UIView {
     // MARK: - Helper Fucntions
     
     func configureUI(withConfig config: RideActionViewConfiguration) {
-        
+        switch config {
+        case .requestRide:
+            buttonAction = .requestRide
+            actionButton.setTitle(buttonAction.description, for: .normal)
+            break
+        case .tripAccepted:
+            guard let user = user else { return }
+            
+            if user.accountType == .passenger {
+                titleLabel.text = "En Route To Passenger"
+                buttonAction = .getDirections
+                actionButton.setTitle(buttonAction.description, for: .normal)
+            } else {
+                titleLabel.text = "Driver En Route"
+                buttonAction = .cancel
+                actionButton.setTitle(buttonAction.description, for: .normal)
+            }
+            break
+        case .pickupPassenger:
+            break
+        case .tripInProgress:
+            break
+        case .endTrip:
+            break
+        }
     }
 }
