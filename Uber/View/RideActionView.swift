@@ -10,6 +10,7 @@ import MapKit
 
 protocol RideActionViewDelegate: AnyObject {
     func uploadTrip(_ view: RideActionView)
+    func cancelTrip()
 }
 
 enum RideActionViewConfiguration {
@@ -80,20 +81,24 @@ class RideActionView: UIView {
         return label
     }()
     
-    private let iconView: UIView = {
+    private lazy var iconView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         
+        view.addSubview(infoViewLabel)
+        infoViewLabel.centerX(inView: view)
+        infoViewLabel.centerY(inView: view)
+        
+        return view
+    }()
+    
+    private let infoViewLabel: UILabel = {
         let label = UILabel()
         label.text = "X"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 30)
         
-        view.addSubview(label)
-        label.centerX(inView: view)
-        label.centerY(inView: view)
-        
-        return view
+        return label
     }()
     
     private let uberLabel: UILabel = {
@@ -165,7 +170,18 @@ class RideActionView: UIView {
     // MARK: - Selectores
     
     @objc func actionButtonPressed() {
-        delegate?.uploadTrip(self)
+        switch buttonAction {
+        case .requestRide:
+            delegate?.uploadTrip(self)
+        case .cancel:
+            delegate?.cancelTrip()
+        case .getDirections:
+            print("get")
+        case .pickup:
+            print("pickup")
+        case .dropOff:
+            print("dropoff")
+        }
     }
     
     // MARK: - Helper Fucntions
@@ -175,7 +191,6 @@ class RideActionView: UIView {
         case .requestRide:
             buttonAction = .requestRide
             actionButton.setTitle(buttonAction.description, for: .normal)
-            break
         case .tripAccepted:
             guard let user = user else { return }
             
@@ -188,13 +203,35 @@ class RideActionView: UIView {
                 buttonAction = .cancel
                 actionButton.setTitle(buttonAction.description, for: .normal)
             }
-            break
+            
+            infoViewLabel.text = String(user.fullName.first ?? "X")
+            uberLabel.text = user.fullName
         case .pickupPassenger:
-            break
+            titleLabel.text = "Arrived At Passenger Location"
+            buttonAction = .pickup
+            actionButton.setTitle(buttonAction.description, for: .normal)
         case .tripInProgress:
-            break
+            guard let user = user else { return }
+            
+            if user.accountType == .driver {
+                actionButton.setTitle("TRIP IN PROGRESS", for: .normal)
+                actionButton.isEnabled = false
+            } else {
+                buttonAction = .getDirections
+                actionButton.setTitle(buttonAction.description, for: .normal)
+            }
+            
+            titleLabel.text = "En Route To Destination"
         case .endTrip:
-            break
+            guard let user = user else { return }
+            
+            if user.accountType == .driver {
+                actionButton.setTitle("ARRIVED AT DESTINATION", for: .normal)
+                actionButton.isEnabled = false
+            } else {
+                buttonAction = .dropOff
+                actionButton.setTitle(buttonAction.description, for: .normal)
+            }
         }
     }
 }

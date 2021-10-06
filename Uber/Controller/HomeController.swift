@@ -495,6 +495,17 @@ extension HomeController: RideActionViewDelegate {
             }
         }
     }
+    
+    func cancelTrip() {
+        Service.shared.cancelTrip { (error, ref) in
+            if let _ = error {
+                print("DEBUG: Error cancel trip")
+                return
+            }
+            
+            self.animateRideActionView(shouldShow: false)
+        }
+    }
 }
 
 // MARK: - PickupControllerDelegate
@@ -513,6 +524,11 @@ extension HomeController: PickupControllerDelegate {
         generatePolyline(toDestination: mapItem)
         
         mapView.zoomToFit(annotations: mapView.annotations)
+        
+        Service.shared.observeTripCancel(trip: trip) {
+            self.removeAnnotationsAndOverlays()
+            self.animateRideActionView(shouldShow: false)
+        }
         
         self.dismiss(animated: true) {
             Service.shared.fetchUserData(uid: trip.passengerUid) { passenger in
