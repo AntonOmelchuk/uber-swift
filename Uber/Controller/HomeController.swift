@@ -354,6 +354,13 @@ private extension HomeController {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: 2000, longitudinalMeters: 2000)
         mapView.setRegion(region, animated: true)
     }
+    
+    func setCustomRegion(withCoordinates coordinates: CLLocationCoordinate2D) {
+        let region = CLCircularRegion(center: coordinates, radius: 25, identifier: "pickup")
+        locationManager?.startMonitoring(for: region)
+        
+        print("DEBUG: Did set region \(region)")
+    }
 }
 
 // MARK: - MKMapViewDelegate
@@ -390,11 +397,19 @@ extension HomeController: MKMapViewDelegate {
     }
 }
 
-// MARK: - LocationServices
+// MARK: - CLLocationManagerDelegate
 
-extension HomeController {
-    func enableLocationServices() {
+extension HomeController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion) {
+        print("DEBUG: Did start monitoring for region: \(region)")
+    }
     
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("DEBUG: Driver did enter passenger region")
+    }
+    
+    func enableLocationServices() {
+        locationManager?.delegate = self
         switch locationManager?.authorizationStatus {
         case .notDetermined:
             locationManager?.requestWhenInUseAuthorization()
@@ -522,6 +537,8 @@ extension HomeController: RideActionViewDelegate {
             
             self.actionButton.setImage(#imageLiteral(resourceName: "baseline_menu_black_36dp").withRenderingMode(.alwaysOriginal), for: .normal)
             self.actionButtonConfig = .showMenu
+            
+            self.inputActivationView.alpha = 1
         }
     }
 }
@@ -536,6 +553,8 @@ extension HomeController: PickupControllerDelegate {
         anno.coordinate = trip.pickupCoordinates
         mapView.addAnnotation(anno)
         mapView.selectAnnotation(anno, animated: true)
+        
+        setCustomRegion(withCoordinates: trip.pickupCoordinates)
         
         let placemark = MKPlacemark(coordinate: trip.pickupCoordinates)
         let mapItem = MKMapItem(placemark: placemark)
