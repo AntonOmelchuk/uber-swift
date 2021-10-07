@@ -109,14 +109,24 @@ class HomeController: UIViewController {
         Service.shared.observeCurrentTrip { trip in
             self.trip = trip
             
-            if trip.state == .accepted {
+            guard let state = trip.state else { return }
+            guard let driverUid = trip.driverUid else { return }
+            
+            switch state {
+            case .requested:
+                break
+            case .accepted:
                 self.shouldPresentLoadingView(false)
-                
-                guard let driverUid = trip.driverUid else { return }
                 
                 Service.shared.fetchUserData(uid: driverUid) { driver in
                     self.animateRideActionView(shouldShow: true, config: .tripAccepted, user: driver)
                 }
+            case .driverArrived:
+                self.rideActionView.config = .driverArrived
+            case .inProgress:
+                break
+            case .completed:
+                break
             }
         }
     }
@@ -261,7 +271,7 @@ class HomeController: UIViewController {
                 rideActionView.user = user
             }
             
-            rideActionView.configureUI(withConfig: config)
+            rideActionView.config = config
         }
     }
     
@@ -406,6 +416,11 @@ extension HomeController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
         print("DEBUG: Driver did enter passenger region")
+        
+        self.rideActionView.config = .pickupPassenger
+        
+        guard let trip = self.trip else { return }
+        Service.shared.updateTripState(trip: trip, state: .driverArrived)
     }
     
     func enableLocationServices() {
@@ -547,7 +562,7 @@ extension HomeController: RideActionViewDelegate {
 
 extension HomeController: PickupControllerDelegate {
     func didAcceptTrip(_ trip: Trip) {
-        self.trip?.state = .accepted
+        self.trip = trip
         
         let anno = MKPointAnnotation()
         anno.coordinate = trip.pickupCoordinates
