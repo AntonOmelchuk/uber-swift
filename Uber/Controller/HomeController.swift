@@ -47,7 +47,7 @@ class HomeController: UIViewController {
     
     weak var delegate: HomeControllerDelegate?
     
-    private var user: User? {
+    var user: User? {
         didSet {
             locationInputView.titleLabel.text = user?.fullName
             
@@ -248,7 +248,6 @@ class HomeController: UIViewController {
     
     func configure() {
         configureUI()
-        fetchUserData()
     }
     
     func configureUI() {
