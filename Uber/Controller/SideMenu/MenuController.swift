@@ -11,17 +11,12 @@ class MenuController: UIViewController {
     
     // MARK: - Properties
     
-    var user: User? {
-        didSet {
-            guard let user = user else { return }
-            menuHeader.user = user
-        }
-    }
+    private let user: User
     
     private lazy var menuHeader: MenuHeader = {
         let frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 80, height: 140)
+        let view = MenuHeader(user: user, frame: frame)
         
-        let view = MenuHeader(frame: frame)
         return view
     }()
     
@@ -50,6 +45,15 @@ class MenuController: UIViewController {
     }()
     
     // MARK: - Lifecycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
