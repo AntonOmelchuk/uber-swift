@@ -127,19 +127,6 @@ class HomeController: UIViewController {
         }
     }
     
-    func signOut() {
-        do {
-            try Auth.auth().signOut()
-            DispatchQueue.main.async {
-                let navigationController = UINavigationController(rootViewController: LoginController())
-                navigationController.modalPresentationStyle = .fullScreen
-                self.present(navigationController, animated: true, completion: nil)
-            }
-        } catch {
-            print("DEBUG: Error signing out")
-        }
-    }
-    
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         Service.shared.fetchUserData(uid: currentUid) { user in

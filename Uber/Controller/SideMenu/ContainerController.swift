@@ -76,6 +76,8 @@ class ContainerController: UIViewController {
     }
 }
 
+// MARK: - HomeControllerDelegate
+
 extension ContainerController: HomeControllerDelegate {
     func handleMenuToggle() {
         isExpand.toggle()
