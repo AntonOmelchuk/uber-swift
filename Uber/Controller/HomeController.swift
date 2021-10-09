@@ -108,24 +108,12 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        checkIfUserIsLoggedIn()
+        
         enableLocationServices()
+        configureUI()
     }
     
     // MARK: - Shared API
-    
-    func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser?.uid == nil {
-            DispatchQueue.main.async {
-                let navigationController = UINavigationController(rootViewController: LoginController())
-                navigationController.modalPresentationStyle = .fullScreen
-                self.present(navigationController, animated: true, completion: nil)
-            }
-        } else {
-            configure()
-        }
-    }
     
     func fetchUserData() {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
