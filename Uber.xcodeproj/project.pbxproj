@@ -29,6 +29,8 @@
 		3ADD5C33270243570036B239 /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD5C32270243570036B239 /* LocationInputView.swift */; };
 		3AED8F8526FE5FD00015E4BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */; };
 		3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */; };
+		3AFDFD4B2711ECC70039F13D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDFD4A2711ECC70039F13D /* SettingsController.swift */; };
+		3AFDFD4D2711F0F80039F13D /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDFD4C2711F0F80039F13D /* UserInfoHeader.swift */; };
 		3AFEDC6227062A0400A612EB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEDC6127062A0400A612EB /* User.swift */; };
 		3AFEDC6427062F7000A612EB /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFEDC6327062F7000A612EB /* LocationHandler.swift */; };
 		F6DE89C027BD611029F5B9C2 /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A83CA75BE4DC77383781750 /* Pods_Uber.framework */; };
@@ -59,6 +61,8 @@
 		3ADD5C32270243570036B239 /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
 		3AED8F8426FE5FD00015E4BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3AFAEF6826FBB6AF001B5CAB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		3AFDFD4A2711ECC70039F13D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		3AFDFD4C2711F0F80039F13D /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		3AFEDC6127062A0400A612EB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3AFEDC6327062F7000A612EB /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 		4A83CA75BE4DC77383781750 /* Pods_Uber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Uber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				3A61730526FD09F000B57DB6 /* AuthButton.swift */,
+				3AFDFD4C2711F0F80039F13D /* UserInfoHeader.swift */,
 				3ADD5C32270243570036B239 /* LocationInputView.swift */,
 				3AA81ECC270897B600FF2949 /* RideActionView.swift */,
 				3ADD5C2F270237800036B239 /* LocationInputActivationView.swift */,
@@ -188,6 +193,7 @@
 			children = (
 				3AB076332711B56C00FF2973 /* MenuController.swift */,
 				3AB076352711B58400FF2973 /* ContainerController.swift */,
+				3AFDFD4A2711ECC70039F13D /* SettingsController.swift */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -319,6 +325,8 @@
 				3AFAEF6926FBB6AF001B5CAB /* SignUpController.swift in Sources */,
 				3A90EC142707A51100305EB2 /* DriverAnnotation.swift in Sources */,
 				3A61730626FD09F000B57DB6 /* AuthButton.swift in Sources */,
+				3AFDFD4D2711F0F80039F13D /* UserInfoHeader.swift in Sources */,
+				3AFDFD4B2711ECC70039F13D /* SettingsController.swift in Sources */,
 				3A69DBE92700EE970072EE75 /* HomeController.swift in Sources */,
 				3AA81ECF2709CAFC00FF2949 /* Trip.swift in Sources */,
 				3AA81ED12709DF3400FF2949 /* PickupController.swift in Sources */,

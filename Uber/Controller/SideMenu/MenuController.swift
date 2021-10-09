@@ -89,6 +89,14 @@ class MenuController: UIViewController {
         
     }
     
+    @objc func settingButtonHandler() {
+        let controller = SettingsController(user: user)
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true, completion: nil)
+    }
+    
     @objc func logoutButtonHandler() { 
         let alert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .actionSheet)
         
@@ -127,6 +135,7 @@ class MenuController: UIViewController {
         
         view.addSubview(menuItem2)
         menuItem2.anchor(top: menuItem1.bottomAnchor, left: view.leftAnchor, paddingTop: 21, paddingLeft: 15)
+        menuItem2.addTarget(self, action: #selector(settingButtonHandler), for: .touchUpInside)
         
         view.addSubview(menuItem3)
         menuItem3.anchor(top: menuItem2.bottomAnchor, left: view.leftAnchor, paddingTop: 21, paddingLeft: 15)
