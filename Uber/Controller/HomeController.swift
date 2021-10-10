@@ -531,23 +531,21 @@ extension HomeController: LocationInputViewDelegate {
 
 extension HomeController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Test"
+        return "Result"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : searchResults.count
+        searchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: resuseIdentifier, for: indexPath) as! LocationCell
         
-        if indexPath.section == 1 {
-            cell.placemark = searchResults[indexPath.row]
-        }
+        cell.placemark = searchResults[indexPath.row]
         
         return cell
     }

@@ -13,11 +13,23 @@ class MenuHeader: UIView {
     
     private let user: User
     
-    private let profileImageView: UIImageView = {
-       let image = UIImageView()
-        image.backgroundColor = .lightGray
+    private lazy var initialLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 42)
+        label.textColor = .white
+        label.text = user.firstInitial
         
-        return image
+        return label
+    }()
+    
+    private lazy var profileImageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.addSubview(initialLabel)
+        initialLabel.centerY(inView: view)
+        initialLabel.centerX(inView: view)
+        
+        return view
     }()
     
     private lazy var fullName: UILabel = {

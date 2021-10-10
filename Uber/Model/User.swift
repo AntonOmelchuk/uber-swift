@@ -18,6 +18,8 @@ struct User {
     let email: String
     var accountType: AccountType!
     var location: CLLocation?
+    
+    var firstInitial: String { return String(fullName.prefix(1)) }
 
     init(uid: String, dictionary: [String: Any]) {
         self.uid = uid

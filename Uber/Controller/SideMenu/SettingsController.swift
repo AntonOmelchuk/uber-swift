@@ -9,6 +9,25 @@ import UIKit
 
 private let reuseIdentifier = "LocationCell"
 
+enum LocationType: Int, CaseIterable, CustomStringConvertible {
+    case home
+    case work
+    
+    var description: String {
+        switch self {
+        case .home: return "Home"
+        case .work: return "Work"
+        }
+    }
+    
+    var subtitle: String {
+        switch self {
+        case .home: return "Add Home"
+        case .work: return "Add Work"
+        }
+    }
+}
+
 class SettingsController: UITableViewController {
     // MARK: - Properties
     
@@ -33,12 +52,10 @@ class SettingsController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         configureTableView()
         configureNavigationBar()
         view.addSubview(headerView)
-        headerView.anchor(top: view.topAnchor, paddingTop: 30)
+        headerView.anchor(top: view.topAnchor, bottom: tableView.topAnchor, paddingTop: 15, paddingBottom: 21)
     }
     
     // MARK: - Selectors
@@ -54,6 +71,7 @@ class SettingsController: UITableViewController {
         tableView.register(LocationCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.backgroundColor = .white
         tableView.tableHeaderView = headerView
+        tableView.tableFooterView = UIView()
     }
     
     func configureNavigationBar() {
@@ -65,5 +83,41 @@ class SettingsController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "baseline_clear_white_36pt_2x").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleDismissal))
         
+    }
+}
+
+// MARK: - UITableViewDelegate/DataSource
+
+extension SettingsController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return LocationType.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .backgroundColor
+        
+        let title = UILabel()
+        title.font = UIFont.systemFont(ofSize: 16)
+        title.textColor = .white
+        title.text = "Favorites"
+        
+        view.addSubview(title)
+        title.centerY(inView: view, leftAnchor: view.leftAnchor, paddingLeft: 16)
+        
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! LocationCell
+        
+        guard let type = LocationType(rawValue: indexPath.row) else { return cell }
+        cell.type = type
+        
+        return cell
     }
 }
